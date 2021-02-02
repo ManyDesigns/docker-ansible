@@ -9,6 +9,7 @@ elif [ "$1" = 'makemeroot' ]; then
   exec sh
 elif [ "$1" = 'asroot' ]; then
   shift
+  cd /root
   exec "$@"
 else
   # Run as ansible user all the command received
