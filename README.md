@@ -15,7 +15,7 @@ playbook.yml
 ```
 Given a structure like this we can easly run ansible with this command:
 ```shell
-docker run --rm --it --volume $PWD:/ansible manydesigns/ansible ansible-playbook -i inventory playbook.yml
+docker run --rm -it --volume $PWD:/ansible manydesigns/ansible ansible-playbook -i inventory playbook.yml
 ```
 
 - `docker run --rm` create and run the container. Remove the container after the command is finished
