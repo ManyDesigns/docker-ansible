@@ -7,6 +7,9 @@ elif [ "$1" = 'setup' ]; then
   exec su-exec ansible ansible -m setup all
 elif [ "$1" = 'makemeroot' ]; then
   exec sh
+elif [ "$1" = 'asroot' ]; then
+  shift
+  exec "$@"
 else
   # Run as ansible user all the command received
   exec su-exec ansible "$@"
