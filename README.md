@@ -62,6 +62,21 @@ alias ansible-galaxy='docker_ansible ansible-galaxy'
 ```
 (stolen from https://github.com/kibatic/docker-ansible)
 
+### On MacOSX we need some 'tricks'
+Remember to check the presence of the ssh-agent with `ssh-add -l`
+```shell
+export DOCKER_ANSIBLE_VERSION=latest
+docker_ansible() {
+	docker run -it --rm --volume /run/host-services/ssh-auth.sock:/tmp/ssh-agent:ro --env SSH_AUTH_SOCK=/tmp/ssh-agent --volume $PWD:/root manydesigns/ansible:$DOCKER_ANSIBLE_VERSION asroot $@
+}
+alias ansible='docker_ansible ansible'
+alias ansible-playbook='docker_ansible ansible-playbook'
+alias ansible-vault='docker_ansible ansible-vault'
+alias ansible-galaxy='docker_ansible ansible-galaxy'
+```
+
+ATTENTION: it works even if the `/run/host-services/ssh-auth.sock` doesn't exists on mac... who knows why?!!
+
 
 ## TROUBLESHOOTING 
 

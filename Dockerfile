@@ -4,7 +4,7 @@ COPY ./entrypoint.sh /usr/local/bin
 RUN set -exo ;\
     apt-get update -y ;\
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        sshpass dumb-init openssh-client ca-certificates wget ;\
+        sshpass dumb-init openssh-client ca-certificates wget rsync ;\
     # Install su-exec
     wget https://launchpad.net/~hnakamur/+archive/ubuntu/su-exec/+build/16698605/+files/su-exec_0.2-1ppa1~ubuntu18.04_amd64.deb ;\
     dpkg -i su-exec_0.2-1ppa1~ubuntu18.04_amd64.deb ;\
